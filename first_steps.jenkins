@@ -1,0 +1,27 @@
+#!groovy
+// First pipeline
+//Другие сборки недоступны, пока это не будет закончена
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent {
+        label 'master'
+        }
+    options {
+    //Храним не более десяти комитов, не более десяти артифактов
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("First step") {
+            steps {
+                sh 'ssh root@ub1 \'hostname\''
+            }
+        }
+        stage("Second step") {
+            steps {
+                sh 'ssh root@ub1 \'uptime\''
+            }
+        }
+    }
+}
