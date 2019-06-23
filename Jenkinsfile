@@ -4,7 +4,7 @@ pipeline {
         maven 'myMaven'
     }
     stages {
-        stage('Maven version') {
+        stage('---Maven version---') {
             steps {
                 sh 'mvn --version'
             }
@@ -14,12 +14,12 @@ pipeline {
                 sh "mvn clean"
             }
         }
-         stage('--test--') {
+         stage('---test---') {
             steps {
                 sh "mvn test"
             }
         }
-        stage('--package--') {
+        stage('---package---') {
             steps {
                 sh "mvn package"
             }
