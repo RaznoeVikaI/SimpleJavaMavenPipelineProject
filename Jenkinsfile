@@ -2,10 +2,14 @@ pipeline {
        agent any
        stages{
               stage('Build') {
-                   sh 'mvn -B -U clean package -Dmaven.test.skip=true'
+                   steps {
+                            sh 'mvn -B -U clean package -Dmaven.test.skip=true'sh 'echo Hello'
+                   }
               }
               stage('Test') {
-                   sh 'mvn test'
+                steps{
+                        sh 'mvn test'
+                }
               }
        }
 }
