@@ -3,7 +3,7 @@ pipeline {
        stages{
               stage('Build') {
                    steps {
-                            sh 'mvn -B -U clean package -Dmaven.test.skip=true
+                            sh 'mvn -B -U surefire:test -DtestFailureIgnore=true'
                    }
               }
               stage('Test') {
